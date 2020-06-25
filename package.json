@@ -1,0 +1,25 @@
+{
+  "name": "mtlv",
+  "version": "0.0.1",
+  "description": "Mini-TLV encoder/decoder",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dotcypress/mtlv.git"
+  },
+  "keywords": [
+    "tlv"
+  ],
+  "author": "Vitaly Domnikov <oss@vitaly.codes>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dotcypress/mtlv/issues"
+  },
+  "homepage": "https://github.com/dotcypress/mtlv#readme",
+  "devDependencies": {
+    "ava": "^3.9.0"
+  }
+}
