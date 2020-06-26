@@ -43,14 +43,13 @@ class MTLV {
   }
 };
 
-class MTLVParser {
+class MTLVDecoder {
   constructor(tagBits) {
     this.decoder = new MTLV(tagBits);
     this.buffer = [];
   }
 
-  parse(data) {
-    this.buffer = this.buffer.concat(data);
+  read() {
     if (this.buffer.length === 0) {
       return null;
     }
@@ -58,13 +57,16 @@ class MTLVParser {
     if (length >= this.buffer.length) {
       return null;
     }
-    const packet = this.buffer.splice(0, length + 1).slice(1);
-    const value = Array.from(packet);
+    const value = this.buffer.splice(0, length + 1).slice(1);
     return { tag, length, value };
+  }
+
+  write(data) {
+    this.buffer = this.buffer.concat([...data]);
   }
 }
 
 module.exports = {
   MTLV,
-  MTLVParser
+  MTLVDecoder
 };
