@@ -8,7 +8,7 @@ class MTLVTransform extends Transform {
     this.decoder = new MTLVDecoder(options.tagBits);
   }
 
-  readPackets(done) {
+  _parse(done) {
     while (true) {
       const packet = this.decoder.read();
       if (!packet) {
@@ -20,11 +20,14 @@ class MTLVTransform extends Transform {
 
   _transform(chunk, encoding, done) {
     this.decoder.write(chunk);
-    this.readPackets(done);
+    this._parse(done);
   }
 
   _flush(done) {
-    this.readPackets(done);
+    this._parse(() => {
+      this.decoder.reset();
+      done();
+    });
   }
 }
 

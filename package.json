@@ -1,7 +1,7 @@
 {
   "name": "mtlv",
-  "version": "0.0.1",
-  "description": "Mini-TLV encoder/decoder",
+  "version": "0.0.2",
+  "description": "MiniTLV encoder/decoder",
   "main": "index.js",
   "scripts": {
     "test": "ava"

@@ -1,10 +1,10 @@
-# MTLV
+# mtlv
 
 MiniTLV - TLV inspired binary protocol.
 
 ## Packet layout
 
-- First byte: Length([8:tagBits]) Tag([tagBits:0])
+- Header byte: Length([8:tagBits]) Tag([tagBits:0])
 - Rest bytes: Value array
 
 ## Installation

@@ -46,6 +46,10 @@ class MTLV {
 class MTLVDecoder {
   constructor(tagBits) {
     this.decoder = new MTLV(tagBits);
+    this.reset();
+  }
+
+  reset() {
     this.buffer = [];
   }
 
