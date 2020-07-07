@@ -4,8 +4,8 @@ class MTLV {
       throw new Error("Tag bits must be more than 0 and less than 8");
     }
     this.tagBis = tagBits;
-    this.maxTag = 1 << tagBits;
-    this.maxLen = 1 << (8 - tagBits);
+    this.maxTag = (1 << tagBits) - 1;
+    this.maxLen = (1 << (8 - tagBits)) - 1;
   }
 
   encode(tag, value) {
@@ -19,11 +19,11 @@ class MTLV {
   }
 
   decodeHeader(header) {
-    const tag = header & (this.maxTag + 1);
-    const length = header >> this.tagBis;
+    const tag = header & this.maxTag;
     if (tag > this.maxTag) {
       throw new Error("Tag overflow");
     }
+    const length = header >> this.tagBis;
     if (length > this.maxLen) {
       throw new Error("Value overflow");
     }
